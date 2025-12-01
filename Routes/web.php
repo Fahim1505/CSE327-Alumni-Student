@@ -15,3 +15,8 @@ Route::get('/logout', function(){
     session()->flush();
     return redirect('/login')->with('success', 'Logged out');
 });
+
+use App\Http\Controllers\EventController;
+Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
+Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
+Route::get('/events', [EventController::class, 'index'])->name('event.index');
