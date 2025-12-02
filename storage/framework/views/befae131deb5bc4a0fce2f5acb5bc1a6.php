@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Jobs List'); ?>
 <?php $__env->startSection('header', 'Jobs List'); ?>
 

@@ -3,14 +3,14 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Models\Job;
+use App\Models\JobListing;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class JobModuleTest extends TestCase
+class JobListingTest extends TestCase
 {
-    use RefreshDatabase; // Resets DB for each test
+    use RefreshDatabase;
 
-    public function test_job_can_be_created()
+    public function test_job_listing_can_be_created()
     {
         $response = $this->post('/jobs', [
             'job_title' => 'Software Engineer',
@@ -21,14 +21,15 @@ class JobModuleTest extends TestCase
         ]);
 
         $response->assertRedirect('/jobs');
-        $this->assertDatabaseHas('jobs', [
+
+        $this->assertDatabaseHas('job_listings', [
             'job_title' => 'Software Engineer',
         ]);
     }
 
-    public function test_job_can_be_updated()
+    public function test_job_listing_can_be_updated()
     {
-        $job = Job::factory()->create();
+        $job = JobListing::factory()->create();
 
         $response = $this->put("/jobs/{$job->id}", [
             'job_title' => 'Updated Title',
@@ -39,28 +40,32 @@ class JobModuleTest extends TestCase
         ]);
 
         $response->assertRedirect('/jobs');
-        $this->assertDatabaseHas('jobs', [
+
+        $this->assertDatabaseHas('job_listings', [
             'id' => $job->id,
             'job_title' => 'Updated Title',
         ]);
     }
 
-    public function test_job_can_be_deleted()
+    public function test_job_listing_can_be_deleted()
     {
-        $job = Job::factory()->create();
+        $job = JobListing::factory()->create();
 
         $response = $this->delete("/jobs/{$job->id}");
+
         $response->assertRedirect('/jobs');
-        $this->assertDatabaseMissing('jobs', [
+
+        $this->assertDatabaseMissing('job_listings', [
             'id' => $job->id,
         ]);
     }
 
-    public function test_jobs_index_displays_jobs()
+    public function test_jobs_index_displays_job_listings()
     {
-        $job = Job::factory()->create();
+        $job = JobListing::factory()->create();
 
         $response = $this->get('/jobs');
+
         $response->assertStatus(200);
         $response->assertSee($job->job_title);
     }
