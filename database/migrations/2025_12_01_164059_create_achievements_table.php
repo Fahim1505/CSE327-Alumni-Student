@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('title');           // Achievement title
+            $table->string('category');        // Achievement category
+            $table->text('description');       // Description of achievement
+            $table->date('date_achieved');     // Date achieved
+            $table->timestamps();              // created_at and updated_at
         });
     }
 
