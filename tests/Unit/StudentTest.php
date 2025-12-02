@@ -25,7 +25,7 @@ class StudentTest extends TestCase
     /**
      * @test
      */
-     public function student_id_accepts_long_or_unusual_strings()
+    public function student_id_accepts_long_or_unusual_strings()
     {
         $student = new Student([
             'name' => 'Ahnaf',
@@ -36,5 +36,39 @@ class StudentTest extends TestCase
         ]);
 
         $this->assertEquals(str_repeat('X', 255), $student->unusualStudentId());
+    }
+    /**
+     * @test
+     */
+    public function test_negative_student_id_not_allowed()
+    {
+    $student = new Student();
+
+    $student->student_id = -50000;
+
+    $this->assertTrue($student->student_id < 0);
+    }
+    /**
+     * @test
+     */
+    public function name_should_not_be_integer_type()
+    {
+        $student = new Student(['name' => 91230]);
+
+        $this->assertFalse(is_numeric($student->name), "Name should not be numeric");
+    }
+    /**
+     * @test
+     */
+    public function division_should_not_accept_unusual_strings()
+    {
+        $student = new Student(['division' => '!@#$%^']);
+
+        $allowedDivisions = ['Dhaka', 'Barisal', 'Sylhet', 'Mymensingh', 'Khulna', 'Rajshahi', 'Rangpur'];
+
+        $this->assertFalse(
+            in_array($student->division, $allowedDivisions),
+            "Division should not accept symbols"
+        );
     }
 }
