@@ -35,127 +35,44 @@ class StudentsController extends Controller
   /**
    * This function allows a registered student to edit their profile
    */
-  public function edit($id)
+  public function edit()
   {
-    $admin = Auth::guard("admin")->user();
-    //
-    $students = Student::find($id);
-    return view("students.edit")
-      ->with("students", $students)
-      ->with("admin", $admin);
+        if (!Auth::check() || !Auth::user() instanceof Student) {
+            abort(403, "You are not authorized to do that.");
+        }
+
+        $student = Auth::user();
+
+        return view('students.edit', compact('student'));
   }
   /**
    * This function updates the profile of the student once they have edited their profile
    */
 
-  public function update(Request $request, $id)
+  public function update(Request $request)
   {
     
-    $this->validate($request, [
-      "name" => "required",
-      "admission_year" => "required",
-      "current_semester" => "required",
-      "division" => "required",
-      "student_id" => "required",
+        if (!Auth::check() || !Auth::user() instanceof Student) {
+            abort(403, "You are not authorized to do that .");
+        }
 
-    ]);
-    if ($request->hasFile("cover_image")) {
-      $filenameWithExt = $request->file("cover_image")->getClientOriginalName();
-    
-      $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-      
-      $extension = $request->file("cover_image")->getClientOriginalExtension();
-     
-      $fileNameToStore = $filename . "_" . time() . "." . $extension;
-     
-      $path = $request
-        ->file("cover_image")
-        ->storeAs("public/cover_images", $fileNameToStore);
-    } else {
-      $fileNameToStore = "noimage.jpg";
-    }
-    $student = Student::find($id);
-    $student->name = $request->input("name");
-    $student->admission_year = $request->input("admission_year");
-    $student->current_semester = $request->input("current_semester");
-    $student->division = $request->input("division");
-    $student->student_id = $request->input("student_id");
+        $student = Auth::user();
 
-    //        $student->Password=Hash::make('default');
-    $student->Email = $request->input("email");
-    $student->save();
-    return redirect("/Students")->with("success", "Account updated");
-  }
-  public function destroy($id)
-  {
-    //
-    $student = Student::find($id);
-    if ($student->image != "noimage.jpg") {
-      Storage::delete("public/cover_images/" . $student->image);
-    }
-    $student->delete();
-    return redirect("/Students")->with("success", "Student removed");
-  }
-  public function block($id)
-  {
-    $student = Student::find($id);
-    $student->isBlocked = true;
-    $student->save();
-    return redirect("/Students")->with("success", "Student blocked");
-  }
-  public function unblock($id)
-  {
-    $student = Student::find($id);
-    $student->isBlocked = false;
-    $student->save();
-    return redirect("/Students")->with("success", "Student blocked");
-  }
-  public function editview($id)
-  {
-    $student = Student::find($id);
-    return view("students.profile")->with("students", $student);
-  }
-  public function updateprofile(Request $request, $id)
-  {
-    //
-    $this->validate($request, [
-      "name" => "required",
-      "admission_year" => "required",
-      "current-semester" => "required",
-      "division" => "required",
-      "student_id" => "required",
+        $validated = $request->validate([
+            'name'             => 'required|string|max:255',
+            'admission_year'   => 'required|integer|min:1900|max:2100',
+            'current_semester' => 'required|integer|min:1|max:12',
+            'division'         => 'required|string|max:10',
+            'student_id'       => 'required|string|max:255',
+        ]);
 
-    ]);
-    if ($request->hasFile("cover_image")) {
-      $filenameWithExt = $request->file("cover_image")->getClientOriginalName();
-    
-      $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $student->update($validated);
 
-      $extension = $request->file("cover_image")->getClientOriginalExtension();
-
-      $fileNameToStore = $filename . "_" . time() . "." . $extension;
-
-      $path = $request
-        ->file("cover_image")
-        ->storeAs("public/cover_images", $fileNameToStore);
-    } else {
-      $fileNameToStore = "noimage.jpg";
-    }
-    $student = Student::find($id);
-    $student->name = $request->input("name");
-    $student->admission_year = $request->input("admission_year");
-    $student->current_semester = $request->input("current_semester");
-    $student->division = $request->input("division");
-    $student->student_id= $request->input("student_id");
-    $student->save();
-    return redirect("/student-dashboard")->with("success", "Account updated");
+        return redirect()
+            ->route('student.profile.edit')
+            ->with('success', 'Profile updated successfully.');
   }
-  public function all_alumni()
-  {
-    $alumni = Alumni::orderBy("id", "desc")->get();
 
-    return view("dashboards.students.alumni-list")->with("alumnis", $alumni);
-  }
   public function storeDonation(Request $request, $student_id)
   {
     $validated = $request->validate([
@@ -165,7 +82,7 @@ class StudentsController extends Controller
         'image'         => 'nullable|image|max:2048'
     ]);
 
-    // If image uploaded
+
     $imagePath = null;
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('donations', 'public');

@@ -24,8 +24,12 @@ class StudentDonation extends Model
     {
         return $this->belongsTo(Student::class);
     }
+    /**
+     * This is a helper function to test full readable string of a student donation
+     */
     public function studentDonationDetails() : string
     {
         return $this->student_id.', '.$this->donation_type.', '.$this->description.', '.$this->amount.', '.$this->image;
     }
+
 }

@@ -48,6 +48,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         array (
             'voku\\' => 5,
         ),
+        'p' => 
+        array (
+            'phpDocumentor\\' => 14,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -108,6 +112,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Psr\\Clock\\' => 10,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
+            'PharIo\\ComposerDistributor\\' => 27,
         ),
         'N' => 
         array (
@@ -185,6 +190,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'phpDocumentor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpdocumentor/shim/src',
         ),
         'Whoops\\' => 
         array (
@@ -370,6 +379,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'PharIo\\ComposerDistributor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phar-io/composer-distributor/src',
         ),
         'NunoMaduro\\Collision\\' => 
         array (
@@ -4748,6 +4761,46 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/Xml.php',
         'PHPUnit\\Util\\Xml\\Loader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/Loader.php',
         'PHPUnit\\Util\\Xml\\XmlException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Exception/XmlException.php',
+        'PharIo\\ComposerDistributor\\Config\\Config' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/Config.php',
+        'PharIo\\ComposerDistributor\\Config\\FileNotFound' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/FileNotFound.php',
+        'PharIo\\ComposerDistributor\\Config\\InvalidPackageName' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/InvalidPackageName.php',
+        'PharIo\\ComposerDistributor\\Config\\InvalidXML' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/InvalidXML.php',
+        'PharIo\\ComposerDistributor\\Config\\Loader' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/Loader.php',
+        'PharIo\\ComposerDistributor\\Config\\Mapper' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/Mapper.php',
+        'PharIo\\ComposerDistributor\\Config\\ValidationFailed' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Config/ValidationFailed.php',
+        'PharIo\\ComposerDistributor\\ConfiguredMediator' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/ConfiguredMediator.php',
+        'PharIo\\ComposerDistributor\\File' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/File.php',
+        'PharIo\\ComposerDistributor\\FileList' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/FileList.php',
+        'PharIo\\ComposerDistributor\\IteratorImplementation' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/IteratorImplementation.php',
+        'PharIo\\ComposerDistributor\\KeyDirectory' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/KeyDirectory.php',
+        'PharIo\\ComposerDistributor\\KeyNotFound' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/KeyNotFound.php',
+        'PharIo\\ComposerDistributor\\NoSemanticVersioning' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/NoSemanticVersioning.php',
+        'PharIo\\ComposerDistributor\\OperationPackage' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/OperationPackage.php',
+        'PharIo\\ComposerDistributor\\PackageVersion' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/PackageVersion.php',
+        'PharIo\\ComposerDistributor\\PluginBase' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/PluginBase.php',
+        'PharIo\\ComposerDistributor\\SemanticVersion' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/SemanticVersion.php',
+        'PharIo\\ComposerDistributor\\Service\\Download' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Service/Download.php',
+        'PharIo\\ComposerDistributor\\Service\\GpgError' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Service/GpgError.php',
+        'PharIo\\ComposerDistributor\\Service\\Installer' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Service/Installer.php',
+        'PharIo\\ComposerDistributor\\Service\\KeyError' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Service/KeyError.php',
+        'PharIo\\ComposerDistributor\\Service\\Verify' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Service/Verify.php',
+        'PharIo\\ComposerDistributor\\Service\\VersionConstraintReplacer' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Service/VersionConstraintReplacer.php',
+        'PharIo\\ComposerDistributor\\SomebodyElsesProblem' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/SomebodyElsesProblem.php',
+        'PharIo\\ComposerDistributor\\Url' => __DIR__ . '/..' . '/phar-io/composer-distributor/src/Url.php',
+        'PharIo\\Executor\\Exception' => __DIR__ . '/..' . '/phar-io/executor/src/ExecutorException.php',
+        'PharIo\\Executor\\Executor' => __DIR__ . '/..' . '/phar-io/executor/src/Executor.php',
+        'PharIo\\Executor\\ExecutorResult' => __DIR__ . '/..' . '/phar-io/executor/src/ExecutorResult.php',
+        'PharIo\\FileSystem\\Directory' => __DIR__ . '/..' . '/phar-io/filesystem/src/Directory.php',
+        'PharIo\\FileSystem\\DirectoryException' => __DIR__ . '/..' . '/phar-io/filesystem/src/DirectoryException.php',
+        'PharIo\\FileSystem\\Exception' => __DIR__ . '/..' . '/phar-io/filesystem/src/Exception.php',
+        'PharIo\\FileSystem\\File' => __DIR__ . '/..' . '/phar-io/filesystem/src/File.php',
+        'PharIo\\FileSystem\\Filename' => __DIR__ . '/..' . '/phar-io/filesystem/src/Filename.php',
+        'PharIo\\FileSystem\\FilenameException' => __DIR__ . '/..' . '/phar-io/filesystem/src/FilenameException.php',
+        'PharIo\\FileSystem\\LastModifiedDate' => __DIR__ . '/..' . '/phar-io/filesystem/src/LastModifiedDate.php',
+        'PharIo\\GnuPG\\ErrorStrings' => __DIR__ . '/..' . '/phar-io/gnupg/src/ErrorStrings.php',
+        'PharIo\\GnuPG\\Exception' => __DIR__ . '/..' . '/phar-io/gnupg/src/Exception.php',
+        'PharIo\\GnuPG\\Factory' => __DIR__ . '/..' . '/phar-io/gnupg/src/Factory.php',
+        'PharIo\\GnuPG\\GnuPG' => __DIR__ . '/..' . '/phar-io/gnupg/src/GnuPG.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
@@ -6761,6 +6814,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Tests\\Unit\\JobListingTest' => __DIR__ . '/../..' . '/tests/Unit/JobListingTest.php',
         'Tests\\Unit\\PhotoGalleryModelTest' => __DIR__ . '/../..' . '/tests/Unit/PhotoGalleryModelTest.php',
         'Tests\\Unit\\StudentAchievementsModelTest' => __DIR__ . '/../..' . '/tests/Unit/StudentAchievementsModelTest.php',
+        'Tests\\Unit\\StudentDonationTest' => __DIR__ . '/../..' . '/tests/Unit/StudentDonationTest.php',
         'Tests\\Unit\\StudentTest' => __DIR__ . '/../..' . '/tests/Unit/StudentTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
@@ -6799,6 +6853,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'phpDocumentor\\Plugin' => __DIR__ . '/..' . '/phpdocumentor/shim/src/Plugin.php',
         'staabm\\SideEffectsDetector\\SideEffect' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffect.php',
         'staabm\\SideEffectsDetector\\SideEffectsDetector' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffectsDetector.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',

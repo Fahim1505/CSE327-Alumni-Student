@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Donation;
+use App\Models\StudentDonation;
 
 class StudentDonationsController extends Controller
 {
@@ -12,7 +12,7 @@ class StudentDonationsController extends Controller
      */
     public function index()
     {
-    $donations = StudentDonation::where('donor_type', 'student')->get();
+    $donations = StudentDonation::with('student')->latest()->get();
     return view('student_donations.student_donation_index', compact('donations'));
     }
     /**
@@ -60,17 +60,15 @@ class StudentDonationsController extends Controller
     // Returns a form that allows editing the donation made by a registered Student
     public function edit($id)
     {
-        $donation = StudentDonation::findOrFail($id);
-        $students = Student::all();
-
-        return view('donations.students.edit', compact('donation', 'students'));
+        $this->authorizeStudentDonation($donation);
+        return view('student_donations.edit', compact('donation'));
     }
     /**
      *  Update your donation for registered students 
      */  
-    public function update(Request $request, $id)
+    public function update(Request $request, StudentDonation $donation)
     {
-        $donation = StudentDonation::findOrFail($id);
+        $this->authorizeStudentDonation($donation);
 
         $validated = $request->validate([
             'student_id'     => 'required|exists:students,id',
@@ -92,9 +90,9 @@ class StudentDonationsController extends Controller
     /**
      *  Delete the donation 
      */  
-    public function destroy($id)
+    public function destroy(StudentDonation $donation)
     {
-        $donation = StudentDonation::findOrFail($id);
+        $this->authorizeStudentDonation($donation);
 
         // Delete old image if exists
         if ($donation->image && file_exists(storage_path('app/public/' . $donation->image))) {
@@ -104,6 +102,15 @@ class StudentDonationsController extends Controller
         $donation->delete();
 
         return redirect()->route('student-donations.index')
-            ->with('success', 'Your donation has been eleted successfully.');
+            ->with('success', 'Your donation has been deleted successfully.');
+    }
+    /**
+     * This function checks the ownership of the registered student over the donation they're trying to modify
+     */
+    protected function authorizeStudentDonation(StudentDonation $donation)
+    {
+        if ($donation->student_id != auth()->id()) {
+            abort(403, 'You are not allowed to modify this donation.');
+        }
     }
 }
