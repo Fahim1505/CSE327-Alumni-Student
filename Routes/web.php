@@ -58,7 +58,7 @@ Route::post('/announcement/{id}/update', [AnnouncementController::class, 'update
 Route::get('/announcement/{id}/delete', [AnnouncementController::class, 'destroy'])->name('announcement.delete');
 
 
-use App\Http\Controllers\EventController;
+//use App\Http\Controllers\EventController;
 Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
 Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
 Route::get('/events', [EventController::class, 'index'])->name('event.index');

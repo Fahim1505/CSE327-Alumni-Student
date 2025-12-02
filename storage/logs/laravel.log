@@ -1340,3 +1340,23 @@
 #28 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #29 {main}
 "} 
+[2025-12-05 00:43:17] local.ERROR: Cannot use App\Http\Controllers\EventController as EventController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\EventController as EventController because the name is already in use at D:\\NSU Files\\CSE327-Alumni-Student\\CSE327-Alumni-Student\\Routes\\web.php:61)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-06 19:40:03] local.ERROR: Cannot use App\Http\Controllers\EventController as EventController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\EventController as EventController because the name is already in use at D:\\NSU Files\\CSE327-Alumni-Student\\CSE327-Alumni-Student\\Routes\\web.php:61)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-06 19:40:29] local.ERROR: Cannot use App\Http\Controllers\EventController as EventController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\EventController as EventController because the name is already in use at D:\\NSU Files\\CSE327-Alumni-Student\\CSE327-Alumni-Student\\Routes\\web.php:61)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-06 19:42:46] local.ERROR: Cannot use App\Http\Controllers\EventController as EventController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\EventController as EventController because the name is already in use at D:\\NSU Files\\CSE327-Alumni-Student\\CSE327-Alumni-Student\\Routes\\web.php:61)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-06 19:43:43] local.ERROR: Cannot use App\Http\Controllers\EventController as EventController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\EventController as EventController because the name is already in use at D:\\NSU Files\\CSE327-Alumni-Student\\CSE327-Alumni-Student\\Routes\\web.php:61)
+[stacktrace]
+#0 {main}
+"} 

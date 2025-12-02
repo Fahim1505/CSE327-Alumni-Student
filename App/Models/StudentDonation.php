@@ -13,6 +13,7 @@ class StudentDonation extends Model
 
     protected $fillable = [
         'student_id',
+        'donation_id',
         'donation_type',
         'description',
         'image',
@@ -22,5 +23,9 @@ class StudentDonation extends Model
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+    public function studentDonationDetails() : string
+    {
+        return $this->student_id.', '.$this->donation_type.', '.$this->description.', '.$this->amount.', '.$this->image;
     }
 }
