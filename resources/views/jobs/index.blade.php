@@ -12,6 +12,7 @@
             <th>Job Title</th>
             <th>Company</th>
             <th>Job Type</th>
+            <th>Description</th> <!-- Added -->
             <th>Dateline</th>
             <th>Actions</th>
         </tr>
@@ -22,6 +23,7 @@
             <td>{{ $job->job_title }}</td>
             <td>{{ $job->company_name }}</td>
             <td>{{ $job->job_type }}</td>
+            <td>{{ $job->description }}</td> <!-- Added -->
             <td>{{ $job->dateline }}</td>
             <td>
                 <a href="{{ route('jobs.edit', $job->id) }}" class="btn btn-warning btn-sm">Edit</a>
