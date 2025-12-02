@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
- 
   public function index()
   {
     //
@@ -33,6 +32,9 @@ class StudentsController extends Controller
   {
   
   }
+  /**
+   * This function allows a registered student to edit their profile
+   */
   public function edit($id)
   {
     $admin = Auth::guard("admin")->user();
@@ -42,22 +44,20 @@ class StudentsController extends Controller
       ->with("students", $students)
       ->with("admin", $admin);
   }
+  /**
+   * This function updates the profile of the student once they have edited their profile
+   */
 
   public function update(Request $request, $id)
   {
     
     $this->validate($request, [
-      "fname" => "required",
-      "mname" => "required",
-      "sname" => "required",
-      "phone" => "required",
-      "email" => "required|string|email|max:255",
+      "name" => "required",
+      "admission_year" => "required",
+      "current_semester" => "required",
+      "division" => "required",
+      "student_id" => "required",
 
-      "dob" => "required",
-      "year" => "required",
-      "county" => "required",
-      "register_stuid" => "required",
-      "register_gender" => "required",
     ]);
     if ($request->hasFile("cover_image")) {
       $filenameWithExt = $request->file("cover_image")->getClientOriginalName();
@@ -75,18 +75,14 @@ class StudentsController extends Controller
       $fileNameToStore = "noimage.jpg";
     }
     $student = Student::find($id);
-    $student->First_name = $request->input("fname");
-    $student->Middle_name = $request->input("mname");
-    $student->Surname = $request->input("sname");
-    $student->RegNo = $request->input("register_stuid");
-    $student->Phone = $request->input("phone");
-    $student->DOB = $request->input("dob");
-    $student->Year_joined = $request->input("year");
-    $student->County = $request->input("county");
-    $student->Avatar = $fileNameToStore;
+    $student->name = $request->input("name");
+    $student->admission_year = $request->input("admission_year");
+    $student->current_semester = $request->input("current_semester");
+    $student->division = $request->input("division");
+    $student->student_id = $request->input("student_id");
+
     //        $student->Password=Hash::make('default');
     $student->Email = $request->input("email");
-    $student->gender = $request->input("register_gender");
     $student->save();
     return redirect("/Students")->with("success", "Account updated");
   }
@@ -123,17 +119,12 @@ class StudentsController extends Controller
   {
     //
     $this->validate($request, [
-      "fname" => "required",
-      "mname" => "required",
-      "sname" => "required",
-      "phone" => "required",
-      "email" => "required|string|email|max:255",
+      "name" => "required",
+      "admission_year" => "required",
+      "current-semester" => "required",
+      "division" => "required",
+      "student_id" => "required",
 
-      "dob" => "required",
-      "year" => "required",
-      "county" => "required",
-      "register_stuid" => "required",
-      "register_gender" => "required",
     ]);
     if ($request->hasFile("cover_image")) {
       $filenameWithExt = $request->file("cover_image")->getClientOriginalName();
@@ -151,18 +142,11 @@ class StudentsController extends Controller
       $fileNameToStore = "noimage.jpg";
     }
     $student = Student::find($id);
-    $student->First_name = $request->input("fname");
-    $student->Middle_name = $request->input("mname");
-    $student->Surname = $request->input("sname");
-    $student->RegNo = $request->input("register_stuid");
-    $student->Phone = $request->input("phone");
-    $student->DOB = $request->input("dob");
-    $student->Year_joined = $request->input("year");
-    $student->County = $request->input("county");
-    $student->Avatar = $fileNameToStore;
-    $student->Password = Hash::make("default");
-    $student->Email = $request->input("email");
-    $student->gender = $request->input("register_gender");
+    $student->name = $request->input("name");
+    $student->admission_year = $request->input("admission_year");
+    $student->current_semester = $request->input("current_semester");
+    $student->division = $request->input("division");
+    $student->student_id= $request->input("student_id");
     $student->save();
     return redirect("/student-dashboard")->with("success", "Account updated");
   }
@@ -172,8 +156,8 @@ class StudentsController extends Controller
 
     return view("dashboards.students.alumni-list")->with("alumnis", $alumni);
   }
- public function storeDonation(Request $request, $student_id)
-{
+  public function storeDonation(Request $request, $student_id)
+  {
     $validated = $request->validate([
         'donation_type' => 'required|string',
         'description'   => 'nullable|string',
@@ -185,7 +169,7 @@ class StudentsController extends Controller
     $imagePath = null;
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('donations', 'public');
-    }
+  
 
     StudentDonation::create([
         'student_id'    => $student_id,
@@ -198,4 +182,4 @@ class StudentsController extends Controller
     return redirect()->back()->with('success', 'Donation submitted successfully.');
 }
 }
-
+}
