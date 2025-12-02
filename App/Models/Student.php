@@ -38,5 +38,10 @@ class Student extends Model
     {
         return $this->name.', '.$this->admission_year.', '.$this->current_semester.', '.$this->division.', '.$this->student_id ;
     }
+     public function unusualStudentId() : string
+    {
+        return $this->student_id ;
+    }
+
 }
 
