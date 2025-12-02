@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JobController;
+use App\Http\Controllers\JobListingController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Job CRUD routes
-Route::resource('jobs', JobController::class);
+// Correct CRUD route for your 4 BLADE FILES
+Route::resource('jobs', JobListingController::class);
