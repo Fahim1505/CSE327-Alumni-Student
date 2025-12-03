@@ -172,9 +172,30 @@ class StudentsController extends Controller
 
     return view("dashboards.students.alumni-list")->with("alumnis", $alumni);
   }
-  public function donate()
-  {
-    return view("students.donate");
-  }
+ public function storeDonation(Request $request, $student_id)
+{
+    $validated = $request->validate([
+        'donation_type' => 'required|string',
+        'description'   => 'nullable|string',
+        'amount'        => 'nullable|numeric',
+        'image'         => 'nullable|image|max:2048'
+    ]);
+
+    // If image uploaded
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('donations', 'public');
+    }
+
+    StudentDonation::create([
+        'student_id'    => $student_id,
+        'donation_type' => $validated['donation_type'],
+        'description'   => $validated['description'] ?? null,
+        'amount'        => $validated['amount'] ?? null,
+        'image'         => $imagePath,
+    ]);
+
+    return redirect()->back()->with('success', 'Donation submitted successfully.');
+}
 }
 
