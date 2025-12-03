@@ -13,3 +13,12 @@ Route::post(
   "StudentsController@updateprofile",
 );
 Route::get("/student-dashboard/alumni", "StudentsController@all_alumni");
+Route::get("/student-dashboard/donate", [
+  StudentsController::class,
+  "donate",
+])->name("student.donate");
+Route::post("/student-dashboard/donate", [
+  StudentsController::class,
+  "processDonation",
+])->name("student.donate.process");
+
