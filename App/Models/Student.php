@@ -34,5 +34,9 @@ class Student extends Model
   {
     return $this->belongsTo("App\Student");
   }
+  public function studentDetails() : string
+    {
+        return $this->name.', '.$this->admission_year.', '.$this->current_semester.', '.$this->division.', '.$this->student_id ;
+    }
 }
 
