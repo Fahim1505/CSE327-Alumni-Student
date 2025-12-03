@@ -1,0 +1,309 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f4f5fb;
+    color: #111827;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Top navigation */
+
+.top-bar {
+    background: #111827;
+    color: #f9fafb;
+    padding: 10px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.top-bar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: #6366f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.brand-name {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-size: 14px;
+}
+
+.nav-links a {
+    margin-left: 16px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* Layout */
+
+.page-wrapper {
+    padding: 24px 16px 40px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.two-column {
+    display: grid;
+    gap: 24px;
+}
+
+@media (min-width: 900px) {
+    .two-column {
+        grid-template-columns: 1.1fr 1.4fr;
+    }
+}
+
+/* Cards and alerts */
+
+.card,
+.profile-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+}
+
+.alert {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.alert.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.alert.error {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn.primary {
+    background: #4f46e5;
+    color: #ffffff;
+}
+
+.btn.primary:hover {
+    background: #4338ca;
+}
+
+.btn.full-width {
+    width: 100%;
+}
+
+/* Profile */
+
+.profile-header {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.profile-photo img,
+.profile-photo-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.profile-info h2 {
+    margin: 0 0 8px;
+}
+
+.profile-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.chip {
+    background: #eef2ff;
+    color: #4338ca;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+.profile-details div {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.profile-details strong {
+    margin-right: 6px;
+}
+
+.social-links {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+}
+
+.profile-actions {
+    margin-left: auto;
+}
+
+/* Donation */
+
+.card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.form-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.form-grid label {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+.form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+.donation-grid {
+    display: grid;
+    gap: 12px;
+}
+
+@media (min-width: 700px) {
+    .donation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.donation-card {
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.donation-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.donation-type {
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.donation-id {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.donation-description {
+    margin: 2px 0 4px;
+}
+
+.donation-image-wrapper img {
+    width: 100%;
+    max-height: 160px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.donation-meta {
+    margin-top: 2px;
+    font-size: 11px;
+    color: #6b7280;
+}
